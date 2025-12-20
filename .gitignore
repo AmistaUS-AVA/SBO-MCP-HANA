@@ -1,0 +1,17 @@
+
+# Build artifacts
+dist/
+build/
+*.spec
+*.zip
+*.log
+__pycache__/
+*.pyc
+.venv/
+.env
+.idea/
+.vscode/
+debug.log
+
+# User config - Important: Do not commit secrets
+config.yaml
