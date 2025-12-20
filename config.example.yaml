@@ -1,0 +1,37 @@
+# SAP MCP Server Configuration Example
+# Copy this file to config.yaml and fill in your details
+
+# ============================================
+# EXAMPLE: SAP HANA Multi-Tenant Connection
+# ============================================
+server:
+  name: sap-hana
+  prefix: sap_hana
+  version: "1.0"
+  http_port: 8088                    # HTTP port for remote access (ngrok)
+
+connector:
+  type: hana
+  host: sechana01                    # Your HANA server hostname
+  port: 30013                        # System DB port (3<NN>13 for multi-tenant)
+  database_name: LAST00006           # Tenant database name
+  user: SYSTEM
+  password: your-password
+
+# Optional: Limit to specific tables (empty = all tables)
+tables: []
+
+# Optional: Enable debug logging
+# log_file: /path/to/mcp-server.log
+
+
+# ============================================
+# PORT REFERENCE
+# ============================================
+# Multi-tenant HANA:
+#   - System DB port: 3<NN>13 (e.g., 30013 for instance 00)
+#   - Use databaseName to specify the tenant DB
+#
+# Single-tenant HANA:
+#   - Port: 3<NN>15 (e.g., 30015 for instance 00)
+#   - No databaseName needed
