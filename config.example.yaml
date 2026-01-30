@@ -12,9 +12,9 @@ server:
 
 connector:
   type: hana
-  host: sechana01                    # Your HANA server hostname
+  host: hostname                    # Your HANA server hostname
   port: 30013                        # System DB port (3<NN>13 for multi-tenant)
-  database_name: LAST00006           # Tenant database name
+  database_name: DATABASE           # Tenant database name
   user: SYSTEM
   password: your-password
 
