@@ -1,7 +1,7 @@
 """Abstract base class for database connectors."""
 
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Any, Optional
 
 
 class BaseConnector(ABC):

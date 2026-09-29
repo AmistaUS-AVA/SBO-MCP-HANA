@@ -15,3 +15,13 @@ debug.log
 
 # User config - Important: Do not commit secrets
 config.yaml
+
+# Installer build outputs
+installer/build/
+installer/payload/*.exe
+*.exe
+.env.*
+*.pem
+*.key
+*.pfx
+.pytest_cache/

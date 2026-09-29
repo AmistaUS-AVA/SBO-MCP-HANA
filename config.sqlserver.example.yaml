@@ -1,0 +1,137 @@
+# SAP MCP Server Configuration - SQL Server Example
+# Copy this file to config.yaml and fill in your details
+
+# ============================================
+# EXAMPLE 1: SQL Server with SQL Authentication
+# ============================================
+server:
+  name: sql-server
+  prefix: sql                             # Tools will be: sql_get_tables, sql_get_columns, sql_run_query
+  version: "1.0"
+  http_port: 8088                         # HTTP port for remote access (ngrok)
+
+connector:
+  type: odbc
+  connection_string: "Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AdventureWorks;UID=sa;PWD=YourPassword123"
+
+# Optional: Limit to specific tables (empty = all tables)
+tables: []
+
+# Optional: Enable debug logging
+# log_file: C:/Logs/mcp-server.log
+
+
+# ============================================
+# EXAMPLE 2: SQL Server with Windows Authentication
+# ============================================
+# server:
+#   name: sql-server
+#   prefix: sql
+#   version: "1.0"
+#
+# connector:
+#   type: odbc
+#   connection_string: "Driver={ODBC Driver 17 for SQL Server};Server=localhost;Database=AdventureWorks;Trusted_Connection=yes"
+#
+# tables: []
+
+
+# ============================================
+# EXAMPLE 3: SQL Server with Named Instance
+# ============================================
+# server:
+#   name: sql-server
+#   prefix: sql
+#   version: "1.0"
+#
+# connector:
+#   type: odbc
+#   connection_string: "Driver={ODBC Driver 17 for SQL Server};Server=localhost\\SQLEXPRESS;Database=MyDatabase;UID=user;PWD=password"
+#
+# tables: []
+
+
+# ============================================
+# EXAMPLE 4: SQL Server with Custom Port
+# ============================================
+# server:
+#   name: sql-server
+#   prefix: sql
+#   version: "1.0"
+#
+# connector:
+#   type: odbc
+#   connection_string: "Driver={ODBC Driver 17 for SQL Server};Server=192.168.1.100,1433;Database=MyDatabase;UID=user;PWD=password"
+#
+# tables: []
+
+
+# ============================================
+# EXAMPLE 5: Azure SQL Database
+# ============================================
+# server:
+#   name: azure-sql
+#   prefix: azure_sql
+#   version: "1.0"
+#
+# connector:
+#   type: odbc
+#   connection_string: "Driver={ODBC Driver 17 for SQL Server};Server=tcp:yourserver.database.windows.net,1433;Database=YourDatabase;UID=username@yourserver;PWD=password;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30"
+#
+# tables: []
+
+
+# ============================================
+# EXAMPLE 6: SQL Server with Encrypted Connection
+# ============================================
+# server:
+#   name: sql-server-secure
+#   prefix: sql
+#   version: "1.0"
+#
+# connector:
+#   type: odbc
+#   connection_string: "Driver={ODBC Driver 17 for SQL Server};Server=myserver.domain.com;Database=SecureDB;UID=appuser;PWD=password;Encrypt=yes;TrustServerCertificate=no"
+#
+# tables: []
+
+
+# ============================================
+# DRIVER REFERENCE
+# ============================================
+# Common SQL Server ODBC drivers:
+#   - {ODBC Driver 18 for SQL Server}  (Latest, recommended for new installs)
+#   - {ODBC Driver 17 for SQL Server}  (Most widely deployed)
+#   - {ODBC Driver 13 for SQL Server}
+#   - {SQL Server Native Client 11.0}  (Legacy)
+#   - {SQL Server}                      (Very old, not recommended)
+#
+# To list installed ODBC drivers on Windows:
+#   - Open ODBC Data Sources (64-bit) from Start Menu
+#   - Or run: odbcconf /a {listdrivers}
+#
+# To install ODBC Driver 17:
+#   - Download from: https://docs.microsoft.com/en-us/sql/connect/odbc/download-odbc-driver-for-sql-server
+
+
+# ============================================
+# CONNECTION STRING OPTIONS
+# ============================================
+# Server formats:
+#   - localhost                         Local default instance
+#   - localhost\SQLEXPRESS              Named instance
+#   - 192.168.1.100,1433                IP with port
+#   - tcp:server.database.windows.net   Azure SQL
+#
+# Authentication:
+#   - UID=user;PWD=password             SQL Server authentication
+#   - Trusted_Connection=yes            Windows integrated authentication
+#
+# Security:
+#   - Encrypt=yes                       Force encryption
+#   - TrustServerCertificate=yes        Accept self-signed certs (dev only!)
+#   - TrustServerCertificate=no         Validate server certificate (production)
+#
+# Timeout:
+#   - Connection Timeout=30             Connection timeout in seconds
+#   - Command Timeout=60                Query timeout in seconds
